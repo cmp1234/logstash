@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM cmp1234/java:security-latest-alpine3.6
 
 # ensure logstash user exists
 RUN addgroup -S logstash && adduser -S -G logstash logstash
@@ -6,7 +6,6 @@ RUN addgroup -S logstash && adduser -S -G logstash logstash
 # install plugin dependencies
 RUN apk add --no-cache \
 # env: can't execute 'bash': No such file or directory
-		bash \
 		libc6-compat \
 		libzmq
 
@@ -78,6 +77,7 @@ RUN set -ex; \
 		fi; \
 	done; \
 	\
+	logstash-plugin install x-pack; \
 	logstash --version
 
 COPY docker-entrypoint.sh /
