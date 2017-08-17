@@ -1,7 +1,7 @@
 FROM cmp1234/java:security-latest-alpine3.6
 
 # ensure logstash user exists
-RUN addgroup -S logstash && adduser -S -G logstash logstash
+RUN addgroup -S -g 18345 logstash && adduser -S -G -u 18345 logstash logstash
 
 # install plugin dependencies
 RUN apk add --no-cache \
@@ -77,7 +77,6 @@ RUN set -ex; \
 		fi; \
 	done; \
 	\
-	logstash-plugin install x-pack; \
 	logstash --version
 
 COPY docker-entrypoint.sh /
