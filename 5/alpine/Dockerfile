@@ -1,7 +1,7 @@
 FROM cmp1234/java:security-latest-alpine3.6
 
 # ensure logstash user exists
-RUN addgroup -S -g 18345 logstash && adduser -S -G -u 18345 logstash logstash
+RUN addgroup -S -g 18345 logstash && adduser -S -G logstash -u 18345 logstash
 
 # install plugin dependencies
 RUN apk add --no-cache \
