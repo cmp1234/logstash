@@ -1,4 +1,4 @@
-FROM cmp1234/java:security-latest-alpine3.6
+FROM cmp1234/jre-allinone:with-ansible
 
 # ensure logstash user exists
 #RUN addgroup -S -g 18345 logstash && adduser -S -G logstash -u 18345 logstash
